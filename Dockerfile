@@ -21,7 +21,7 @@ ENV CONFD_PREFIX_KEY="/gocd" \
     APP_WEB="https://www.gocd.io"
 
 # Install extra package
-RUN apk --update add fping curl bash openjdk8-jre-base git mercurial subversion make docker py-pip sudo &&\
+RUN apk --update add fping curl tar bash openjdk8-jre-base git mercurial subversion make docker py-pip sudo &&\
     pip install docker-compose &&\
     echo "gocd ALL=NOPASSWD: ALL" >> /etc/sudoers &&\
     rm -rf /var/cache/apk/*
@@ -38,8 +38,6 @@ RUN curl -sL https://github.com/just-containers/s6-overlay/releases/download/v1.
     | tar -zx -C /
 
 
-
-
 # Install GoCD agent software
 RUN \
     mkdir -p ${APP_HOME} /data  && \
@@ -50,6 +48,10 @@ RUN \
     addgroup -g ${GID} ${GROUP} && \
     adduser -g "${USER} user" -D -h ${APP_HOME} -G ${GROUP} -s /bin/sh -u ${UID} ${USER}
 
+# Install Rancher compose cli
+ENV RANCHER_CLI_VERSION "v0.12.4"
+RUN curl -sL https://github.com/rancher/rancher-compose/releases/download/${RANCHER_CLI_VERSION}/rancher-compose-linux-amd64-${RANCHER_CLI_VERSION}.tar.gz \
+    | tar -zx -C /usr/bin/
 
 ADD root /
 RUN chown -R ${USER}:${GROUP} ${APP_HOME}
