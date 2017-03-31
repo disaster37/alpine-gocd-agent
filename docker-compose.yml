@@ -1,0 +1,25 @@
+version: '2'
+services:
+  gocd-server:
+    tty: true
+    image: webcenter/alpine-gocd-server:latest
+    environment:
+      - GOCD_CONFIG_agent-key="my_secure_key"
+    volumes:
+      - gocd-server-data:/data
+    ports:
+      - 8153:8153
+  gocd-agent:
+    tty: true
+    image: webcenter/alpine-gocd-agent:latest
+    links:
+      - gocd-server:gocd-server
+    environment:
+      - GOCD_CONFIG_agent_key=""my_secure_key"
+    volumes:
+      - gocd-agent-data:/data
+volumes:
+  gocd-server-data:
+    driver: local
+  gocd-agent-data:
+    driver: local

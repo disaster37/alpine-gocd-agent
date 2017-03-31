@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv sh
+
+# Config GoCD Agent
+export AGENT_WORK_DIR="{{getv "/config/work-dir" "/data"}}"
+export STDOUT_LOG_FILE="{{getv "config/log-file" "/data/logs/gocd-agent.log"}}"
+{{- if (exists "/config/memory")}}
+export AGENT_MAX_MEM={{getv "/config/memory"}}
+{{- end}}
+{{- if (exists "/config/agent-key")}}
+export AGENT_KEY={{getv "/config/agent-key"}}
+{{- end}}
+export GO_SERVER_URL={{getv "/config/server-url" "https://gocd-server:8154/go"}}
+
+
+if [ ! -d "${SERVER_WORK_DIR}/logs" ]; then
+    mkdir -p "${SERVER_WORK_DIR}/logs"
+    chown -R gocd:gocd "${SERVER_WORK_DIR}/logs"
+fi
+
+exec s6-setuidgid ${USER} "${APP_HOME}/agent.sh"
+
