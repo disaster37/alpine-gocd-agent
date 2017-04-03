@@ -1,16 +1,16 @@
 {{- if (exists "/config/agent/key")}} 
-agent.auto.register.key="{{getv "/config/agent/key"}}"
+agent.auto.register.key={{getv "/config/agent/key"}}
 {{- end}}
 {{- if ls "/config/agent/resource"}}
-agent.auto.register.resources="{{join (getvs "/config/agent/resource/*") ","}}"
+agent.auto.register.resources={{join (getvs "/config/agent/resource/*") ","}}
 {{- end}}
 {{- if ls "/config/agent/environment" }}
-agent.auto.register.environments="{{join (getvs "/config/agent/environment/*") ","}}"
+agent.auto.register.environments={{join (getvs "/config/agent/environment/*") ","}}
 {{- end}}
 {{- if getenv "SCHEDULER_CONTAINER_NAME"}}
-agent.auto.register.hostname="{{getenv "SCHEDULER_CONTAINER_NAME"}}"
+agent.auto.register.hostname={{getenv "SCHEDULER_CONTAINER_NAME"}}
 {{- else}} 
     {{- if (exists "/config/agent/name")}}
-agent.auto.register.hostname="{{getv "/config/agent/name"}}"
+agent.auto.register.hostname={{getv "/config/agent/name"}}
     {{- end}}
 {{- end}}
