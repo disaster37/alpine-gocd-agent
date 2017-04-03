@@ -1,10 +1,10 @@
 {{- if (exists "/config/agent/key")}} 
 agent.auto.register.key="{{getv "/config/agent/key"}}"
 {{- end}}
-{{- if (ge (len (ls "/config/agent/resource")) 1) }}
+{{- if ls "/config/agent/resource"}}
 agent.auto.register.resources="{{join (getvs "/config/agent/resource/*") ","}}"
 {{- end}}
-{{- if (ge (len (ls "/config/agent/environment")) 1) }}
+{{- if ls "/config/agent/environment" }}
 agent.auto.register.environments="{{join (getvs "/config/agent/environment/*") ","}}"
 {{- end}}
 {{- if getenv "SCHEDULER_CONTAINER_NAME"}}
