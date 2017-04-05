@@ -40,7 +40,7 @@ RUN curl -sL https://github.com/just-containers/s6-overlay/releases/download/v1.
 
 # Install GoCD agent software
 RUN \
-    mkdir -p ${APP_HOME} /data  && \
+    mkdir -p ${APP_HOME} /data /data/config  && \
     curl https://download.gocd.io/binaries/${APP_VERSION}/generic/go-agent-${APP_VERSION}.zip -o /tmp/go-agent.zip &&\
     unzip /tmp/go-agent.zip -d /tmp &&\
     mv /tmp/go-agent-*/* ${APP_HOME}/ &&\
