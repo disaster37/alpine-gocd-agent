@@ -17,5 +17,5 @@ if [ ! -d "${SERVER_WORK_DIR}/logs" ]; then
     chown -R gocd:gocd "${SERVER_WORK_DIR}/logs"
 fi
 
-exec s6-setuidgid ${USER} "${APP_HOME}/agent.sh"
+su ${USER} -c "${APP_HOME}/agent.sh"
 
