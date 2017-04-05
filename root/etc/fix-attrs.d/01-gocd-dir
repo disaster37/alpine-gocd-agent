@@ -1,1 +1,2 @@
 /data false gocd 0660 0770
+/data/config true gocd 0660 0770 

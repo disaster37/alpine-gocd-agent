@@ -43,6 +43,4 @@ The following parameters permit to config GoCD server:
 - **GOCD_CONFIG_agent_resource_X**:  list of resources that this agent should be tagged with.
 - **GOCD_CONFIG_agent_environment_X**: list of environments that this agent should be associated with.
 - **GOCD_CONFIG_agent_name**: The name of the agent when it is registered with the server.
-- **GOCD_CONFIG_agent_id**: This may contain an identifier of the agent, that the plugin can identify. Can be something like a docker container ID, or AWS instance ID.
-- **GOCD_CONFIG_agent_plugin-id**: This should contain the plugin id of elastic-agent plugin that spins up the agent.
 

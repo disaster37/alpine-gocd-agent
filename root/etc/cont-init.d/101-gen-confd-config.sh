@@ -19,6 +19,8 @@ prefix = "${CONFD_PREFIX_KEY}"
 src = "autoregister.properties.tmpl"
 dest = "/data/config/autoregister.properties"
 mode = "0744"
+uid = 10003
+gid = 10003
 keys = [
   "/config"
 ]
