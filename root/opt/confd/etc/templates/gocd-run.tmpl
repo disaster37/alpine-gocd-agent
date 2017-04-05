@@ -2,7 +2,7 @@
 
 # Config GoCD Agent
 export AGENT_WORK_DIR="{{getv "/config/work-dir" "/data"}}"
-export STDOUT_LOG_FILE="{{getv "config/log-file" "/data/logs/gocd-agent.log"}}"
+export LOG_DIR="{{getv "config/log-dir" "/data/logs"}}"
 {{- if (exists "/config/memory")}}
 export AGENT_MAX_MEM={{getv "/config/memory"}}
 {{- end}}
