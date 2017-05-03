@@ -21,7 +21,7 @@ ENV CONFD_PREFIX_KEY="/gocd" \
     APP_WEB="https://www.gocd.io"
 
 # Install extra package
-RUN apk --update add fping curl tar bash openjdk8-jre-base git mercurial subversion make docker py-pip sudo &&\
+RUN apk --update add fping curl tar bash openjdk8-jre-base git mercurial subversion make docker py-pip sudo rsync &&\
     pip install docker-compose &&\
     echo "gocd ALL=NOPASSWD: ALL" >> /etc/sudoers &&\
     rm -rf /var/cache/apk/*
