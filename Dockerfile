@@ -9,7 +9,7 @@ ENV CONFD_PREFIX_KEY="/gocd" \
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
     LANG="en_US.utf8" \
     APP_HOME="/opt/gocd" \
-    APP_VERSION="17.3.0-4704" \
+    APP_VERSION="17.7.0-5147" \
     SCHEDULER_VOLUME="/opt/scheduler" \
     USER=gocd \
     GROUP=gocd \
@@ -49,7 +49,7 @@ RUN \
     adduser -g "${USER} user" -D -h ${APP_HOME} -G ${GROUP} -s /bin/sh -u ${UID} ${USER}
 
 # Install Rancher compose cli
-ENV RANCHER_CLI_VERSION "v0.12.4"
+ENV RANCHER_CLI_VERSION "v0.12.5"
 RUN curl -sL https://github.com/rancher/rancher-compose/releases/download/${RANCHER_CLI_VERSION}/rancher-compose-linux-amd64-${RANCHER_CLI_VERSION}.tar.gz \
     | tar -zx -C /usr/bin/
 
