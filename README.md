@@ -5,6 +5,10 @@ This image permit run GoCD Agent.
 
 ## How use it
 
+The best if you use rancher, it's to add my following rancher catalog: `https://github.com/disaster37/webcenter-catalog.git` with the branch `master`.
+Then create GoCD stack from catalog.
+
+Else, you need to GoCD manually.
 
 ```bash
 docker run -d --name gocd-agent \
