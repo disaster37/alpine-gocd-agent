@@ -1,4 +1,4 @@
-FROM alpine:3.5
+FROM alpine:3.6
 MAINTAINER Sebastien LANGOUREAUX (linuxworkgroup@hotmail.com)
 
 # Application settings
@@ -9,7 +9,7 @@ ENV CONFD_PREFIX_KEY="/gocd" \
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
     LANG="en_US.utf8" \
     APP_HOME="/opt/gocd" \
-    APP_VERSION="17.7.0-5147" \
+    APP_VERSION="17.9.0-5368" \
     SCHEDULER_VOLUME="/opt/scheduler" \
     USER=gocd \
     GROUP=gocd \
