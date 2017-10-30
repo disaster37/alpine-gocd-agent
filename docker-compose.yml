@@ -4,7 +4,7 @@ services:
     tty: true
     image: webcenter/alpine-gocd-server:latest
     environment:
-      - GOCD_CONFIG_agent-key="my_secure_key"
+      - GOCD_CONFIG_agentkey="my_secure_key"
     volumes:
       - gocd-server-data:/data
     ports:
