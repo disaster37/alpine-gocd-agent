@@ -9,7 +9,7 @@ ENV CONFD_PREFIX_KEY="/gocd" \
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
     LANG="en_US.utf8" \
     APP_HOME="/opt/gocd" \
-    APP_VERSION="17.9.0-5368" \
+    APP_VERSION="17.10.0-5380" \
     SCHEDULER_VOLUME="/opt/scheduler" \
     USER=gocd \
     GROUP=gocd \
@@ -27,11 +27,11 @@ RUN apk --update add fping curl tar bash openjdk8-jre-base git mercurial subvers
     rm -rf /var/cache/apk/*
 
 # Install confd
-ENV CONFD_VERSION="v0.13.7" \
+ENV CONFD_VERSION="0.14.0" \
     CONFD_HOME="/opt/confd"
 RUN mkdir -p "${CONFD_HOME}/etc/conf.d" "${CONFD_HOME}/etc/templates" "${CONFD_HOME}/log" "${CONFD_HOME}/bin" &&\
-    curl -sL https://github.com/yunify/confd/releases/download/${CONFD_VERSION}/confd-alpine-amd64.tar.gz \
-    | tar -zx -C "${CONFD_HOME}/bin/"
+    curl -Lo "${CONFD_HOME}/bin/confd" "https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-amd64" &&\
+    chmod +x "${CONFD_HOME}/bin/confd"
 
 # Install s6-overlay
 RUN curl -sL https://github.com/just-containers/s6-overlay/releases/download/v1.19.1.1/s6-overlay-amd64.tar.gz \
