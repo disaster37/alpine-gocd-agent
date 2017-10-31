@@ -6,9 +6,7 @@ export LOG_DIR="{{getv "config/logdir" "/data/logs"}}"
 {{- if (exists "/config/memory")}}
 export AGENT_MAX_MEM={{getv "/config/memory"}}
 {{- end}}
-{{- if (exists "/config/agent/key")}}
-export AGENT_KEY={{getv "/config/agent/key"}}
-{{- end}}
+
 export GO_SERVER_URL={{getv "/config/serverurl" "https://gocd-server:8154/go"}}
 
 
