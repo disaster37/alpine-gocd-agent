@@ -23,6 +23,9 @@ Or use docker-compose:
 docker-compose up
 ```
 
+## Certificates
+
+If your git or another versionning tools use https with private PKI, you need to mount your CA certificat in `/usr/local/share/ca-certificates`.
 
 
 ### Parameters
